@@ -1,103 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Growth Hub</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 700px;
-      margin: 30px auto;
-      background: white;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
-    h1 {
-      color: #008000;
-      text-align: center;
-    }
-    .profit-box {
-      background: #e0ffe0;
-      padding: 15px;
-      margin: 15px 0;
-      border-left: 5px solid #00cc00;
-    }
-    .testimonial {
-      font-style: italic;
-      margin-top: 10px;
-      background-color: #f9f9f9;
-      padding: 10px;
-      border-left: 4px solid #00cc00;
-    }
-    .cta {
-      background: #00cc00;
-      color: white;
-      padding: 12px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      margin: 20px auto;
-      width: fit-content;
-      border-radius: 5px;
-    }
-    .footer {
-      margin-top: 40px;
-      font-size: 12px;
-      text-align: center;
-      color: gray;
-    }
-    .warning {
-      margin-top: 30px;
-      padding: 10px;
-      background: #fff3cd;
-      border-left: 5px solid #ffc107;
-    }
-    .features {
-      margin-top: 20px;
-    }
-    .features li {
-      margin-bottom: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Growth Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    h1 {
+      color: #008000;
+      text-align: center;
+    }
+    .profit-box {
+      background: #e0ffe0;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 5px solid #00cc00;
+    }
+    .testimonial {
+      font-style: italic;
+      margin-top: 10px;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-left: 4px solid #00cc00;
+    }
+    .cta {
+      background: #00cc00;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 20px auto;
+      width: fit-content;
+      border-radius: 5px;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      text-align: center;
+      color: gray;
+    }
+    .features {
+      margin-top: 20px;
+    }
+    .features li {
+      margin-bottom: 10px;
+    }
+    .form-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 8px;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .form-box button {
+      background: #008000;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Crypto Growth Hub</h1>
-    <p>Turn a small investment into massive returns. Withdraw profits fast. Trusted by over <strong>50,000 users worldwide!</strong></p>
+  <div class="container">
+    <h1>Crypto Growth Hub</h1>
+    <p>Turn a small investment into massive returns. Withdraw profits fast. Trusted by over <strong>50,000 users worldwide!</strong></p>
 
-    <ul class="features">
-      <li><strong>Instant Profits:</strong> Your money grows in real time!</li>
-      <li><strong>AI-Powered Trades:</strong> No skills needed. Just invest and relax.</li>
-      <li><strong>Secure & Anonymous:</strong> Your privacy is our priority.</li>
-    </ul>
+    <ul class="features">
+      <li><strong>Instant Profits:</strong> Your money grows in real time!</li>
+      <li><strong>AI-Powered Trades:</strong> No skills needed. Just invest and relax.</li>
+      <li><strong>Secure & Anonymous:</strong> Your privacy is our priority.</li>
+    </ul>
 
-    <div class="profit-box">
-      <p><strong>Your Dashboard</strong></p>
-      <p>Invested: $100</p>
-      <p>Profit: $900</p>
-      <p>Withdrawable: $1000</p>
-    </div>
+    <div class="profit-box">
+      <p><strong>Your Dashboard</strong></p>
+      <p>Invested: $100</p>
+      <p>Profit: <span id="profit">$900</span></p>
+      <p>Withdrawable: <span id="total">$1000</span></p>
+    </div>
 
-    <div class="testimonial">“I was broke and unemployed. Now, I earn daily thanks to @CryptoMentor. I owe him everything!” – Happy Client</div>
+    <div class="testimonial">
+      “I was broke and unemployed. Now, I earn daily thanks to @CryptoMentor. I owe him everything!” – Happy Client
+    </div>
 
-    <a href="#" class="cta">Start Earning Now</a>
+    <a href="#signup" class="cta">Start Earning Now</a>
 
-    <div class="warning">
-      <strong>WARNING:</strong> This site is for <em>educational and parody purposes only</em>. Do not engage with any real sites promising similar results.
-    </div>
+    <div class="form-box" id="signup">
+      <h3>Sign Up</h3>
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <input type="text" placeholder="Binance ID / TRC20 Wallet Address">
+      <button onclick="alert('Signup successful! Dashboard loading...')">Create Account</button>
+    </div>
 
-    <div class="footer">
-      &copy; 2025 Crypto Growth Hub | This is a fake project for demonstration purposes only.
-    </div>
-  </div>
+    <div class="form-box">
+      <h3>Login</h3>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button onclick="alert('Logged in! Redirecting to your dashboard...')">Login</button>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 Crypto Growth Hub. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    let profitEl = document.getElementById("profit");
+    let totalEl = document.getElementById("total");
+    let profit = 900;
+    let total = 1000;
+    setInterval(() => {
+      profit += Math.floor(Math.random() * 10);
+      total = 100 + profit;
+      profitEl.innerText = "$" + profit;
+      totalEl.innerText = "$" + total;
+    }, 2000);
+  </script>
 </body>
-  </html>
+</html>
+
   
